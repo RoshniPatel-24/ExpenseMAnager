@@ -4,11 +4,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Expense Manager	|	AddCategory</title>
+<jsp:include page="AllCss.jsp"></jsp:include>
 </head>
-<body>
+<body class="toggle-sidebar">
 
-<form action="savecategory" method="post">
+<jsp:include page="AdminSidebar.jsp"></jsp:include>
+
+
+    
+
+  </main><!-- End #main -->
+<!-- <form action="savecategory" method="post">
 		CategoryName : <input type="text" name="categoryName"/>
 		
 		<br><br>
@@ -18,6 +24,6 @@
 	<a href="listcategories">List Category</a> <br>
 	<a href ="savesubcategory">Sub Category</a>
 
-
+ -->
 </body>
 </html>

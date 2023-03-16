@@ -2,11 +2,18 @@ package com.arth.bean;
 
 public class SubCategoryBean {
 	
-	private Integer subCategoryId;
-	private Integer categoryId;
+	private Integer subCategoryId, categoryId;
 	private String subCategoryName;
 	private boolean deleted;
+	private String categoryName;
 	
+	
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
 	public Integer getSubCategoryId() {
 		return subCategoryId;
 	}
