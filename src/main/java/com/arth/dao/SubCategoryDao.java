@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.arth.bean.CategoryBean;
 import com.arth.bean.SubCategoryBean;
 
 @Repository
@@ -31,6 +32,18 @@ public class SubCategoryDao {
 	public void deleteSubCategory(Integer subCategoryId) {
 		String updateQuery = "update subcategory set deleted = true where subcategoryId = ?";
 		stmt.update(updateQuery,subCategoryId);	
+	}
+
+	public  SubCategoryBean getsubCategoryById(Integer subCategoryID)  {
+		SubCategoryBean subCategoryBean = null;
+		try {
+			subCategoryBean = stmt.queryForObject("select * from subcategory where subCategoryId =?",
+					new BeanPropertyRowMapper<SubCategoryBean>(SubCategoryBean.class),new Object[] {subCategoryID});
+		}catch (Exception e) {
+			System.out.println("SubCategoryDao :: getsubCategoryById()");
+			System.out.println(e.getMessage());
+		}
+		return subCategoryBean;
 	}
 
 	

@@ -6,9 +6,26 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Expense Manager	|	List Status</title>
+
+<jsp:include page="AdminHeader.jsp"></jsp:include>
+
 </head>
 <body>
+
+<jsp:include page="AdminSidebar.jsp"></jsp:include>
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
+          <li class="breadcrumb-item active">List Status</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
 
 <h3>List status</h3>
  
@@ -16,30 +33,52 @@
 	List<StatusBean> list =  (List<StatusBean>)request.getAttribute("list");
  %>
 
-<table border="1">
+<section class="section">
+      <div class="row">
+        <div class="col-lg-12">
 
-	<tr>
-		<th>StatusId</th>
-		<th>StatsuName</th>
-		<th>Deleted?</th>
-		<th>Action</th>
-	</tr>
+	<div class="iconslist" align="right">
+        <a href="newstatus">
+          <i class="bi bi-plus-square-fill"></i>
+          </a> 
+        </div>
 
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Status</h5>
 
+              <!-- Table with stripped rows -->
+              <table class="table datatable" border="1">
+                <thead>
+                  <tr>
+                    <th scope="col">StatusId</th>
+                    <th scope="col">StatusName</th>
+                    <th scope="col">Deleted?</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
 
-<%for(StatusBean cb:list){ %>
-	<tr>
-		<td><%=cb.getStatusId() %></td>
-		<td><%=cb.getStatusName() %></td>
-		<td><%=cb.getDeleted()%></td>
-		<td><a href="deletestatus/<%=cb.getStatusId() %>">Delete</a></td>
-	</tr>
+				<%for(StatusBean cb:list){ %>
+						<tr>
+							<td><%=cb.getStatusId() %></td>
+							<td><%=cb.getStatusName() %></td>
+							<td><%=cb.getDeleted()%></td>
+							<td><a href="deletestatus/<%=cb.getStatusId() %>">Delete </a>|
+						<a href="viewstatus/<%=cb.getStatusId() %>">View</a></td>
+						</tr>
 	
-	<%} %>
-</table>
+				<%} %>
+				</tbody>
+              </table>
+              <!-- End Table with stripped rows -->
 
-<a href="admindashboard">Admin Dashboard</a>
-
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+   </main>
 
 </body>
 </html>

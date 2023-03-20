@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.arth.bean.AccountBean;
+import com.arth.bean.CategoryBean;
 import com.arth.dao.AccountDao;
 
 @Controller
@@ -42,6 +43,22 @@ public class AccountController {
 		//12 45 
 		accountDao.deleteAccount(accountId);
 		return "redirect:/listaccount";//
+	}
+	
+	/*@GetMapping("/viewcategory/{categoryId}")
+	public String viewCategory (@PathVariable("categoryId") Integer categoryID,Model model) {
+		CategoryBean categoryBean = categoryDao.getCategoryById(categoryID);
+		model.addAttribute("categoryBean",categoryBean);
+		return "ViewCategory";
+		
+	}*/
+	
+	
+	@GetMapping("/viewaccount/{accountId}")
+	public String viewAccount (@PathVariable("accountId") Integer accountId,Model model){
+		AccountBean accountBean = accountDao.getAccountById(accountId);
+		model.addAttribute("accountBean",accountBean);
+		return "ViewAccountType";
 	}
 	
 

@@ -49,12 +49,6 @@ public class CategoryDao {
 		}
 		return categoryBean;
 	}
-
-	public CategoryBean getAllCategoryById(Integer categoryID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	// update
 
 	// delete

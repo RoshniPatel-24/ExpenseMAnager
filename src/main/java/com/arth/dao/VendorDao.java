@@ -36,6 +36,18 @@ public class VendorDao {
 				stmt.update(updateQuery,vendorId);
 				
 			}
+			
+			public VendorBean getVendorById(Object vendorId) {
+			     VendorBean vendorBean = null;
+				try {
+					vendorBean = stmt.queryForObject("select * from vendor where vendorId =?",
+					new BeanPropertyRowMapper<VendorBean>(VendorBean.class),new Object[] {vendorId});
+				}catch (Exception e) {
+					System.out.println("VendorDao :: getVendorById()");
+					System.out.println(e.getMessage());
+				}
+				return vendorBean;
+			}
 
 
 

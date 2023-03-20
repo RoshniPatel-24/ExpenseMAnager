@@ -70,11 +70,10 @@ public class CategoryController {
 	
 	@GetMapping("/viewcategory/{categoryId}")
 	public String viewCategory (@PathVariable("categoryId") Integer categoryID,Model model) {
-		CategoryBean categoryBean = categoryDao.getAllCategoryById(categoryID);
+		CategoryBean categoryBean = categoryDao.getCategoryById(categoryID);
 		model.addAttribute("categoryBean",categoryBean);
 		return "ViewCategory";
 		
 	}
-	
-	
+		
 }

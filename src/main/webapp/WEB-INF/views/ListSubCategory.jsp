@@ -7,8 +7,25 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Expense Manager	|	List Sub Category</title>
+
+<jsp:include page="AdminHeader.jsp"></jsp:include>
+
 </head>
 <body>
+
+<jsp:include page="AdminSidebar.jsp"></jsp:include>
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
+          <li class="breadcrumb-item active">List Sub Category</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
 
 <h3>List Sub Category</h3>
  
@@ -16,32 +33,54 @@
 	List<SubCategoryBean> list =  (List<SubCategoryBean>)request.getAttribute("list");
  %>
 
-<table border="1">
+<section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+        
+        <div class="iconslist" align="right">
+        <a href="savesubcategory">
+          <i class="bi bi-plus-square-fill"></i>
+          </a> 
+        </div>
 
-	<tr>
-		<th>SubCategoryId</th>
-		<th>SubCategoryName</th>
-		<th>Deleted?</th>
-		<th>Action</th>
-	</tr>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Sub Categories</h5>
 
+              <!-- Table with stripped rows -->
+              <table class="table datatable" border="1">
+                <thead>
+                  <tr>
+                    <th scope="col">SubCategoryId</th>
+                    <th scope="col">SubCategoryName</th>
+                    <th scope="col">Deleted?</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
 
-
-<%for(SubCategoryBean cb:list){ %>
+			<%for(SubCategoryBean cb:list){ %>
 	<tr>
 		<td><%=cb.getSubCategoryId() %></td>
 		<td><%=cb.getSubCategoryName() %></td>
 		<td><%=cb.isDeleted()%></td>
-		<td><a href="deletesubcategory/<%=cb.getSubCategoryId() %>">Delete</a></td>
+		<td><a href="deletesubcategory/<%=cb.getSubCategoryId() %>">Delete</a>|
+		<a href="viewsubcategory/<%=cb.getSubCategoryId() %>">View</a></td>
 	</tr>
 	
 	<%} %>
 	
 
-</table>
+</tbody>
+              </table>
+              <!-- End Table with stripped rows -->
 
-<a href="admindashboard">Admin Dashboard</a>
-
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+   </main>
 
 
 </body>

@@ -1,17 +1,17 @@
+<%@page import="com.arth.bean.ExpenseBean"%>
 <%@page import="java.util.List"%>
-<%@page import="com.arth.bean.CategoryBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Expense Manager	|	ListCategory</title>
-
+<title>Expense Manager	|	List Expense</title>
 <jsp:include page="AdminHeader.jsp"></jsp:include>
-
 </head>
 <body>
+
+
 <jsp:include page="AdminSidebar.jsp"></jsp:include>
 
 <main id="main" class="main">
@@ -21,55 +21,55 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
-          <li class="breadcrumb-item active">List Category</li>
+          <li class="breadcrumb-item active">List Expense<li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
-<%
-	List<CategoryBean> list =  (List<CategoryBean>)request.getAttribute("list");
+<h3>List Expense</h3>
+
+ 
+ <%
+	List<ExpenseBean> list =  (List<ExpenseBean>)request.getAttribute("list");
  %>
 
-
- <section class="section">
+<section class="section">
       <div class="row">
         <div class="col-lg-12">
-        
-        <div class="iconslist" align="right">
-        <a href="newcategory">
+
+<div class="iconslist" align="right">
+        <a href="newexpense">
           <i class="bi bi-plus-square-fill"></i>
           </a> 
         </div>
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Categories</h5>
+              <h5 class="card-title">Expense</h5>
 
               <!-- Table with stripped rows -->
               <table class="table datatable" border="1">
                 <thead>
                   <tr>
-                    <th scope="col">CategoryId</th>
-                    <th scope="col">CategoryName</th>
+                    <th scope="col">ExpenseId</th>
+                    <th scope="col">ExpenseName</th>
                     <th scope="col">Deleted?</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                
-                <%for(CategoryBean cb:list){ %>
-                
-                  <tr>
-                   		<td><%=cb.getCategoryId() %></td>
-						<td><%=cb.getCategoryName() %></td>
-						<td><%=cb.getDeleted()%></td>
-						<td><a href="deletecategory/<%=cb.getCategoryId() %>">Delete</a> |
-						<a href="viewcategory/<%=cb.getCategoryId() %>">View</a></td>
-                  </tr>
-                  
-                  <%} %>
-                  
-                </tbody>
+
+				<%for(ExpenseBean cb:list){ %>
+						<tr>
+							<td><%=cb.getExpenseId() %></td>
+							<td><%=cb.getExpenseName() %></td>
+							<td><%=cb.getDeleted()%></td>
+							<td><a href="deleteexpense/<%=cb.getExpenseId() %>">Delete </a>|
+						<a href="viewexpense/<%=cb.getExpenseId() %>">View</a></td>
+						</tr>
+	
+				<%} %>
+				</tbody>
               </table>
               <!-- End Table with stripped rows -->
 
@@ -79,44 +79,8 @@
       </div>
     </section>
    </main>
-  
+
+
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-<!--  <h3>List Category</h3>
- 
- 
-
-<table border="1">
-
-	<tr>
-		<th>CategoryId</th>
-		<th>CategoryName</th>
-		<th>Deleted?</th>
-		<th>Action</th>
-	</tr>
-
-
-
-
-	<tr>
-		
-	</tr>
-	
-	
-	
-
-</table>
-
-<a href="admindashboard">Admin Dashboard</a> -->
-

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.arth.bean.CategoryBean;
 import com.arth.bean.StatusBean;
 import com.arth.dao.StatusDao;
 
@@ -45,6 +46,12 @@ public class StatusController {
 		statusDao.deleteStatus(statusId);
 		return "redirect:/liststatus";//
 	}
-	
+	@GetMapping("/viewstatus/{statusId}")
+	public String viewstatus (@PathVariable("statusId") Integer statusID,Model model) {
+		StatusBean statusBean = statusDao.getStatusById(statusID);
+		model.addAttribute("statusBean",statusBean);
+		return "ViewStatus";
+		
+	}
 
 }

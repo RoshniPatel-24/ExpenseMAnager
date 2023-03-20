@@ -16,6 +16,7 @@ import com.arth.dao.VendorDao;
 public class VendorController {
 	@Autowired
 	VendorDao vendorDao;
+	private Object vendorID;
 	
 	@GetMapping("/newvendor") // url--browser
 	public String newVendor() { // method
@@ -26,7 +27,7 @@ public class VendorController {
 	public String savevendor(VendorBean vendorBean) {
 		System.out.println(vendorBean.getVendorName());// statusName;
 		vendorDao.addVendor(vendorBean);
-		return "redirect:/liststatus";
+		return "redirect:/listvendor";
 	}
 	@GetMapping("/listvendor")
 	public String listVendor(Model model) {
@@ -44,6 +45,12 @@ public class VendorController {
 		return "redirect:/listvendor";//
 	}
 	
-
-
+	@GetMapping("/viewvendor/{vendorId}")
+	public String viewVendor (@PathVariable("vendorId") Integer vendorId,Model model) {
+		VendorBean vendorBean = vendorDao.getVendorById(vendorId);
+		model.addAttribute("vendorBean",vendorBean);
+		return "ViewVendor";
+		
+	}	
+	
 }

@@ -149,7 +149,7 @@ public class SessionController {
 			
 			@GetMapping("/logout")
 			public String logout(HttpSession session) {
-				session.invalidate();
+				session.invalidate();//session destroy
 				return "redirect:/login";
 			}
 

@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.arth.bean.AccountBean;
+import com.arth.bean.CategoryBean;
 
 
 
@@ -37,6 +38,18 @@ public class AccountDao {
 				String updateQuery = "update account set deleted = true where accountId = ?";
 				stmt.update(updateQuery,accountId);
 				
+			}
+			
+			public AccountBean getAccountById(Integer accountId) {
+				AccountBean accountBean = null;
+				try {
+					accountBean = stmt.queryForObject("select * from account where accountId =?",
+							new BeanPropertyRowMapper<AccountBean>(AccountBean.class),new Object[] {accountId});
+				}catch (Exception e) {
+					System.out.println("AccountDao :: getAccountById()");
+					System.out.println(e.getMessage());
+				}
+				return accountBean;
 			}
 
 }

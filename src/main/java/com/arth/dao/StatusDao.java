@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.arth.bean.CategoryBean;
 import com.arth.bean.StatusBean;
 
 
@@ -38,6 +39,17 @@ public class StatusDao{
 			String updateQuery = "update status set deleted = true where statusId = ?";
 			stmt.update(updateQuery,statusId);
 			
+		}
+		public StatusBean getStatusById(Integer statusId) {
+			StatusBean statusBean = null;
+			try {
+				statusBean = stmt.queryForObject("select * from status where statusId =?",
+						new BeanPropertyRowMapper<StatusBean>(StatusBean.class),new Object[] {statusId});
+			}catch (Exception e) {
+				System.out.println("StatusDao :: getStatusById()");
+				System.out.println(e.getMessage());
+			}
+			return statusBean;
 		}
 
 }
