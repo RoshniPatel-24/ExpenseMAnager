@@ -53,6 +53,7 @@
                   <tr>
                     <th scope="col">SubCategoryId</th>
                     <th scope="col">SubCategoryName</th>
+                    <th scope="col">CategoryName</th>
                     <th scope="col">Deleted?</th>
                     <th scope="col">Action</th>
                   </tr>
@@ -63,6 +64,7 @@
 	<tr>
 		<td><%=cb.getSubCategoryId() %></td>
 		<td><%=cb.getSubCategoryName() %></td>
+		<td><%=cb.getCategoryName()%></td>
 		<td><%=cb.isDeleted()%></td>
 		<td><a href="deletesubcategory/<%=cb.getSubCategoryId() %>">Delete</a>|
 		<a href="viewsubcategory/<%=cb.getSubCategoryId() %>">View</a></td>

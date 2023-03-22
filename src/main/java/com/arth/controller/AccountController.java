@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.arth.bean.AccountBean;
-import com.arth.bean.CategoryBean;
 import com.arth.dao.AccountDao;
 
 @Controller
@@ -25,7 +24,7 @@ public class AccountController {
 	}
 	@PostMapping("/saveaccount")
 	public String saveAccount(AccountBean accountBean) {
-		System.out.println(accountBean.getAccountName());// statusName;
+		System.out.println(accountBean.getAccountType());// statusName;
 		accountDao.addAccount(accountBean);
 		return "redirect:/listaccount";
 	}

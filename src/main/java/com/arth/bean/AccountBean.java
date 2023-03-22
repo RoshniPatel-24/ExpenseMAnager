@@ -2,7 +2,7 @@ package com.arth.bean;
 
 public class AccountBean {
 	private Integer accountId;
-	private String accountName;
+	private String accountType;
 	private Boolean deleted;
 	public Integer getAccountId() {
 		return accountId;
@@ -10,11 +10,11 @@ public class AccountBean {
 	public void setAccountId(Integer accountId) {
 		this.accountId = accountId;
 	}
-	public String getAccountName() {
-		return accountName;
+	public String getAccountType() {
+		return accountType;
 	}
-	public void setAccountName(String accountName) {
-		this.accountName = accountName;
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
 	}
 	public Boolean getDeleted() {
 		return deleted;

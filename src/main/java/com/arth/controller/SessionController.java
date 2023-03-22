@@ -1,6 +1,7 @@
 package com.arth.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,15 +38,25 @@ public class SessionController {
 
 	// jsp input process
 	@PostMapping("/saveuser")
-	public String saveUser(UserBean user) {
+	public String saveUser(UserBean user , Model model) {
 		System.out.println(user.getFirstName());
 		System.out.println(user.getEmail());
 
 		// validation
 		// dbValidation
+		// x@x.com present ?
+				UserBean userBean = userDao.getUserByEmail(user.getEmail());
+				if (userBean == null) {
+					// insert
+					userDao.insertUser(user);
+					return "Login"; // EmployeeLogin.jsp
+				}else {
+					model.addAttribute("error","Email is already Registerd with Us");
+					return "Signup";
+				}
+		
 		// insert
-		userDao.insertUser(user);
-		return "Login"; // EmployeeLogin.jsp
+		
 	}
 
 	// calculateTempSalary()
@@ -152,6 +163,6 @@ public class SessionController {
 				session.invalidate();//session destroy
 				return "redirect:/login";
 			}
-
+		
 }
 

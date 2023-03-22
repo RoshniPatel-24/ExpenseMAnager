@@ -8,9 +8,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.arth.bean.AccountBean;
-import com.arth.bean.CategoryBean;
-
-
 
 @Repository
 
@@ -19,9 +16,9 @@ public class AccountDao {
 	JdbcTemplate stmt;
 	// add
 			public void addAccount(AccountBean accountBean) {
-				String insertQuery = "insert into account (accountName,deleted) values (?,?) ";
+				String insertQuery = "insert into account (accountType,deleted) values (?,?) ";
 
-				stmt.update(insertQuery, accountBean.getAccountName(), false);// insert //update //delete
+				stmt.update(insertQuery, accountBean.getAccountType(), false);// insert //update //delete
 			}
 			public List<AccountBean>getAllAccount() {
 

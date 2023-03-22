@@ -12,6 +12,7 @@
 <%SubCategoryBean subCategoryBean = (SubCategoryBean)request.getAttribute("subCategoryBean"); %>
 
 SubCategoryId:<%=subCategoryBean.getSubCategoryId()%><br>
+CategoryId:<%=subCategoryBean.getCategoryId()%><br>
 SubCategoryName:<%=subCategoryBean.getSubCategoryName()%><br>
 
 </body>
