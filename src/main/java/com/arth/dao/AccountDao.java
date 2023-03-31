@@ -24,11 +24,11 @@ public class AccountDao {
 
 				String selectQuery = "select * from account where deleted = false";
 
-				List<AccountBean> list =  stmt.query(selectQuery, new BeanPropertyRowMapper<AccountBean>(AccountBean.class));
+				List<AccountBean> accountlist =  stmt.query(selectQuery, new BeanPropertyRowMapper<AccountBean>(AccountBean.class));
 				
 				//c1 c2 c3 
 				
-				return list;
+				return accountlist;
 			}
 			
 			public void deleteAccount(Integer accountId) {

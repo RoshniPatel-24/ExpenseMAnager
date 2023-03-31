@@ -30,7 +30,7 @@
               <h5 class="card-title">Add Sub Category</h5>
 				
 				<%
-					List<CategoryBean> list = (List<CategoryBean>) request.getAttribute("list");
+					List<CategoryBean> categorylist = (List<CategoryBean>) request.getAttribute("categorylist");
 				%>
 				
 				
@@ -46,14 +46,12 @@
                     <select class="form-select" id="floatingSelect" aria-label="Category" name="categoryId">
                           
 						<%
-							for (CategoryBean cb : list) {
+							for (CategoryBean cb : categorylist) {
 						%>
 							<option value="<%=cb.getCategoryId()%>">
 							<%=cb.getCategoryName()%></option>
 							
-							<%
-								}
-							%>
+							<%}%>
 					</select>
                    
                     <label for="floatingSelect">Category</label>

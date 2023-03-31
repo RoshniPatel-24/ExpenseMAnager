@@ -30,7 +30,7 @@
 <h3>List Sub Category</h3>
  
  <%
-	List<SubCategoryBean> list =  (List<SubCategoryBean>)request.getAttribute("list");
+	List<SubCategoryBean> subcategorylist =  (List<SubCategoryBean>)request.getAttribute("subcategorylist");
  %>
 
 <section class="section">
@@ -38,7 +38,7 @@
         <div class="col-lg-12">
         
         <div class="iconslist" align="right">
-        <a href="savesubcategory">
+        <a href="newsubcategory">
           <i class="bi bi-plus-square-fill"></i>
           </a> 
         </div>
@@ -60,7 +60,7 @@
                 </thead>
                 <tbody>
 
-			<%for(SubCategoryBean cb:list){ %>
+			<%for(SubCategoryBean cb:subcategorylist){ %>
 	<tr>
 		<td><%=cb.getSubCategoryId() %></td>
 		<td><%=cb.getSubCategoryName() %></td>

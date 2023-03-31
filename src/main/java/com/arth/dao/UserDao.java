@@ -1,10 +1,13 @@
 package com.arth.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.arth.bean.CategoryBean;
 import com.arth.bean.ForgetPasswordBean;
 import com.arth.bean.LoginBean;
 import com.arth.bean.UpdatePasswordBean;
@@ -87,6 +90,18 @@ public class UserDao {
 			System.out.println(e.getMessage());
 		}
 		return null;
+	}
+	
+	
+	public List<UserBean> getAllUser() {
+
+		String selectQuery = "select * from users";
+
+		List<UserBean> userlist =  stmt.query(selectQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class));
+		
+		//c1 c2 c3 
+		
+		return userlist;
 	}
 
 }

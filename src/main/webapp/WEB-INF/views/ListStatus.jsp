@@ -30,7 +30,7 @@
 <h3>List status</h3>
  
  <%
-	List<StatusBean> list =  (List<StatusBean>)request.getAttribute("list");
+	List<StatusBean> statuslist =  (List<StatusBean>)request.getAttribute("statuslist");
  %>
 
 <section class="section">
@@ -59,7 +59,7 @@
                 </thead>
                 <tbody>
 
-				<%for(StatusBean cb:list){ %>
+				<%for(StatusBean cb:statuslist){ %>
 						<tr>
 							<td><%=cb.getStatusId() %></td>
 							<td><%=cb.getStatusName() %></td>

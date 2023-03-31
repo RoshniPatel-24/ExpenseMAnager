@@ -56,8 +56,8 @@ public class CategoryController {
 	public String listCategories(Model model) {
 
 		// pull all category from db-table
-		List<CategoryBean> list = categoryDao.getAllCategory();
-		model.addAttribute("list",list);
+		List<CategoryBean> categorylist = categoryDao.getAllCategory();
+		model.addAttribute("categorylist",categorylist);
 		return "ListCategory";
 	}
 	

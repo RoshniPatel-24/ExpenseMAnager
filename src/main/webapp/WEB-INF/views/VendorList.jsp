@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Expense Manager	|	List Status</title>
+<title>Expense Manager	|	List Vendor</title>
 
 <jsp:include page="AdminHeader.jsp"></jsp:include>
 
@@ -30,7 +30,7 @@
 <h3>List Vendor</h3>
  
  <%
-	List<VendorBean> list =  (List<VendorBean>)request.getAttribute("list");
+	List<VendorBean> vendorlist =  (List<VendorBean>)request.getAttribute("vendorlist");
  %>
 
 
@@ -60,7 +60,7 @@
                 </thead>
                 <tbody>
 	
-<%for(VendorBean cb:list){ %>
+<%for(VendorBean cb:vendorlist){ %>
 	<tr>
 		<td><%=cb.getVendorId() %></td>
 		<td><%=cb.getVendorName() %></td>

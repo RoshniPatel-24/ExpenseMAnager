@@ -14,13 +14,14 @@ public class AdminController {
 	public String adminDashboard(Model model) {
 		System.out.println("InSide admindashboard--url-metho--");
 		
-		Integer totalOrderCount = adminDao.getTotalOrderCountForCurrentDate();
+		/*Integer totalOrderCount = adminDao.getTotalOrderCountForCurrentDate();
 		Integer totalUserCount = adminDao.getTotalUserCountForCurrentYear();
 		Integer sumOfOrderAmount = adminDao.getSumOfOrderAmountForCurrentDate();
 		
 		model.addAttribute("totalSales",totalOrderCount);
-		model.addAttribute("totalRevenue",sumOfOrderAmount);
 		model.addAttribute("totalUsers",totalUserCount);
+		model.addAttribute("totalRevenue",sumOfOrderAmount);*/
+		
 		return "AdminDashboard";
 	}
 }

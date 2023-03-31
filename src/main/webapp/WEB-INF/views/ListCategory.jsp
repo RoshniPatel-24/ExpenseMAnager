@@ -27,7 +27,7 @@
     </div><!-- End Page Title -->
 
 <%
-	List<CategoryBean> list =  (List<CategoryBean>)request.getAttribute("list");
+	List<CategoryBean> categorylist =  (List<CategoryBean>)request.getAttribute("categorylist");
  %>
 
 
@@ -57,7 +57,7 @@
                 </thead>
                 <tbody>
                 
-                <%for(CategoryBean cb:list){ %>
+                <%for(CategoryBean cb:categorylist){ %>
                 
                   <tr>
                    		<td><%=cb.getCategoryId() %></td>

@@ -9,24 +9,50 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.arth.bean.CategoryBean;
 import com.arth.bean.ExpenseBean;
+import com.arth.dao.AccountDao;
+import com.arth.dao.CategoryDao;
 import com.arth.dao.ExpenseDao;
+import com.arth.dao.StatusDao;
+import com.arth.dao.SubCategoryDao;
+import com.arth.dao.UserDao;
+import com.arth.dao.VendorDao;
 
 
 @Controller
 public class ExpenseController {
 	@Autowired
 	ExpenseDao expenseDao;
+	@Autowired
+	CategoryDao categoryDao;
+	@Autowired
+	SubCategoryDao subCategoryDao;
+	@Autowired
+	StatusDao statusDao;
+	@Autowired
+	AccountDao accountDao;
+	@Autowired
+	VendorDao vendorDao;
+	@Autowired
+	UserDao userDao;
 	
-	@GetMapping("/newexpense")  //url --Browser
-	public String addExpense() {  //method
+	@GetMapping("/addexpense")  //url --Browser
+	public String addExpense(Model model) {  //method
+		List<CategoryBean> categorylist = categoryDao.getAllCategory();
+		model.addAttribute("categorylist",categorylist);
+		model.addAttribute("subcategorylist",subCategoryDao.getAllSubCategory());
+		model.addAttribute("statuslist",statusDao.getAllStatus());
+		model.addAttribute("accountlist",accountDao.getAllAccount());
+		model.addAttribute("vendorlist",vendorDao.getAllVendor());
+		model.addAttribute("userlist",userDao.getAllUser());
 		
 		return "AddExpense"; //jsp open
 	}
 	
-	@PostMapping("saveexpense")
+	@PostMapping("/saveexpense")
 	public String saveexpense(ExpenseBean expenseBean) {
-		System.out.println(expenseBean.getExpenseName()); //expensename
+		System.out.println(expenseBean.getExpenseId()); //expensename
 		expenseDao.addExpense(expenseBean);
 		return "redirect:/listexpense";
 	}
@@ -36,8 +62,8 @@ public class ExpenseController {
 		
 		//pull all expense from db-table
 		
-		List<ExpenseBean> list = expenseDao.getAllExpense();
-		model.addAttribute("list",list);
+		List<ExpenseBean> expenselist = expenseDao.getAllExpense();
+		model.addAttribute("expenselist",expenselist);
 		return "ListExpense";
 	}
 	

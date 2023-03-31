@@ -1,4 +1,4 @@
-<%@page import="com.arth.bean.ExpenseBean"%>
+<%@page import="com.arth.bean.IncomeBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Expense Manager	|	List Expense</title>
+<title>Expense Manager	|	List Income</title>
 <jsp:include page="AdminHeader.jsp"></jsp:include>
 </head>
 <body>
@@ -21,16 +21,16 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
-          <li class="breadcrumb-item active">List Expense<li>
+          <li class="breadcrumb-item active">List Income<li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
-<h3>List Expense</h3>
+<h3>List Income</h3>
 
  
  <%
-	List<ExpenseBean> expenselist =  (List<ExpenseBean>)request.getAttribute("expenselist");
+	List<IncomeBean> incomelist =  (List<IncomeBean>)request.getAttribute("incomelist");
  %>
 
 <section class="section">
@@ -45,43 +45,36 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">List Expense</h5>
+              <h5 class="card-title">List Income</h5>
 
               <!-- Table with stripped rows -->
-              <table class="table datatable" border="1" id="listexpense">
+              <table class="table datatable" border="1" id="listincome">
                 <thead>
                   <tr>
-                    <th scope="col">ExpenseId</th>
+                    <th scope="col">IncomeId</th>
                     <th scope="col">Title</th>                                        
-                    <th scope="col">CategoryName</th>                                        
-                    <th scope="col">SubCategoryName</th>
-                    <th scope="col">VendorName</th> 
-                    <th scope="col">AccountName</th>
+     				<th scope="col">Date</th>
+     				<th scope="col">UserId</th>
+     				<th scope="col">AccountId</th>
+     				<th scope="col">Description</th>
+     				<th scope="col">StatusId</th>
                     <th scope="col">Amount</th>  
-                    <th scope="col">StatusName</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">UserName</th>
                     <th scope="col">Action</th>                    
                   </tr>
                 </thead>
                 <tbody>
 
-				<%for(ExpenseBean eb:expenselist){ %>
+				<%for(IncomeBean eb:incomelist){ %>
 						<tr>
-							<td><%=eb.getExpenseId()%></td>
+							<td><%=eb.getIncomeId()%></td>
 							<td><%=eb.getTitle()%></td> 
-							<td><%=eb.getCategoryName()%></td>
-							<td><%=eb.getSubCategoryName()%></td>
-							<td><%=eb.getVendorName() %></td>
-							<td><%=eb.getAccountType()%> </td>
-							<td><%=eb.getAmount()%></td>
-							<td><%=eb.getStatusName()%></td>
 							<td><%=eb.getDate()%></td>
+							<td><%=eb.getAccountId()%> </td>
 							<td><%=eb.getDescription()%></td>
-							<td><%=eb.getFirstName()%></td> 
-							<td><a href="deleteexpense/<%=eb.getExpenseId() %>" onclick="return confirm('Are you sure want to delete this record?')">Delete </a>|
-						<a href="viewexpense/<%=eb.getExpenseId() %>">View</a></td>
+							<td><%=eb.getStatusId()%></td>
+							<td><%=eb.getAmount()%></td>
+							<td><a href="deleteincome/<%=eb.getIncomeId() %>" onclick="return confirm('Are you sure want to delete this record?')">Delete </a>|
+						<a href="viewincome/<%=eb.getIncomeId() %>">View</a></td>
 						</tr>
 	
 				<%} %>

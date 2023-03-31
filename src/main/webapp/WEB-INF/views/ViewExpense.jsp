@@ -12,7 +12,7 @@
 <%ExpenseBean expenseBean = (ExpenseBean)request.getAttribute("expenseBean"); %>
 
 ExpenseId:<%=expenseBean.getExpenseId()%><br>
-ExpenseName:<%=expenseBean.getExpenseName()%><br>
+
 
 </body>
 </html>

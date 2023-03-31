@@ -25,11 +25,11 @@ public class CategoryDao {
 
 		String selectQuery = "select * from category where deleted = false";
 
-		List<CategoryBean> list =  stmt.query(selectQuery, new BeanPropertyRowMapper<CategoryBean>(CategoryBean.class));
+		List<CategoryBean> categorylist =  stmt.query(selectQuery, new BeanPropertyRowMapper<CategoryBean>(CategoryBean.class));
 		
 		//c1 c2 c3 
 		
-		return list;
+		return categorylist;
 	}
 	
 	public void deleteCategory(Integer categoryId) {

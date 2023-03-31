@@ -12,7 +12,7 @@
 <%AccountBean accountBean = (AccountBean)request.getAttribute("accountBean"); %>
 
 AccountId:<%=accountBean.getAccountId()%><br>
-AccountName:<%=accountBean.getAccountName()%><br>
+AccountName:<%=accountBean.getAccountType()%><br>
 
 </body>
 </html>

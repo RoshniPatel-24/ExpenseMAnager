@@ -30,7 +30,7 @@
 <h3>List AccountType</h3>
  
  <%
-	List<AccountBean> list =  (List<AccountBean>)request.getAttribute("list");
+	List<AccountBean> accountlist =  (List<AccountBean>)request.getAttribute("accountlist");
  %>
 
 <section class="section">
@@ -52,17 +52,17 @@
                 <thead>
                   <tr>
                     <th scope="col">AccountId</th>
-                    <th scope="col">AccountName</th>
+                    <th scope="col">AccountType</th>
                     <th scope="col">Deleted?</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
 
-<%for(AccountBean cb:list){ %>
+<%for(AccountBean cb:accountlist){ %>
 	<tr>
 		<td><%=cb.getAccountId() %></td>
-		<td><%=cb.getAccountName() %></td>
+		<td><%=cb.getAccountType() %></td>		
 		<td><%=cb.getDeleted()%></td>
 		<td><a href="deleteaccount/<%=cb.getAccountId() %>">Delete</a> |
 		<a href="viewaccount/<%=cb.getAccountId() %>">View</td>

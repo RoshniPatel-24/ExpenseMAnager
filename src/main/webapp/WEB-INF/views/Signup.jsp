@@ -62,6 +62,12 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  
+  <style type="text/css">
+        .error {
+            color: red;
+        }
+   </style>
 </head>
 
 <body>
@@ -89,45 +95,55 @@
                     <p class="text-center small">Enter your personal details to create account</p>
                   </div>
 
-                  <form action="saveuser" method="post""row g-3 needs-validation" novalidate>
+                  <form action="saveuser" method="post">
                     <div class="col-12">
                       <label for="yourName" class="form-label">First Name</label>
-                      <input type="text" name="firstName" class="form-control" id="yourName" required>
-                      <div class="invalid-feedback">Please, enter your first name!</div>
-                    </div>
+                      <input type="text" name="firstName" class="form-control" id="firstName">
+                        <span id="firstNameError" class="error"></span>
+                   		</div>
                     
                      <div class="col-12">
                       <label for="yourName" class="form-label">Last Name</label>
-                      <input type="text" name="lastName" class="form-control" id="yourName" required>
-                      <div class="invalid-feedback">Please, enter your last name!</div>
+                      <input type="text" name="lastName" class="form-control" id="lastName">
+                      <span id="lastNameError" class="error"></span>
                     </div>
 
                     <div class="col-12">
                       <label for="yourEmail" class="form-label">Email</label>
-                      <input type="email" name="email" class="form-control" id="yourEmail" required>
-                      <div class="invalid-feedback">Please enter a valid Email adddress!</div>
-                      <div style="color:red;" >${error}</div>
-                    </div>
+                      	<input type="email" name="email" class="form-control" id="email">
+                      	<span id="emailError" class="error"></span>
+                      <div class="invalid-feedback">Please enter a valid Email!</div>
+                	</div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <input type="password" name="password" class="form-control" id="password" >
+                      <span id="passwordError" class="error"></span>
                       <div class="invalid-feedback">Please enter your password!</div>
+                    </div>
+                    
+                    <div class="col-12">
+                      <label for="yourPassword" class="form-label">Confirm Password</label>
+                      <input type="password" name="password" class="form-control" id="confirmPassword" >
+                      <div class="invalid-feedback">Please confirm your password!</div>
                     </div>
 
                     <div class="col-12">
                       <div class="form-check">
-                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" >
                         <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
                         <div class="invalid-feedback">You must agree before submitting.</div>
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                      <!-- <button class="btn btn-primary w-100" type="submit">Create Account</button> -->
+                       <input type="button" value="Signup" onclick="validation()" />
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">Already have an account? <a href="login">Log in</a></p>
                     </div>
+                    
+                     
                   </form>
 
                 </div>
@@ -155,6 +171,76 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script type="text/javascript">
+        function validation() {
+            firstName = document.getElementById("firstName");
+            firstNameError = document.getElementById("firstNameError");
+            firstNameRegex = /^[a-zA-Z]+$/;
+
+            lastName = document.getElementById("lastName");
+            lastNameError = document.getElementById("lastNameError");
+            lastNameRegex = /^[a-zA-Z]+$/;
+
+            password = document.getElementById("password");
+            password = document.getElementById("passwordError");
+            passwordRegex = ^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]).{8,32}$;
+      
+            email = document.getElementById("email")
+            emailError = document.getElementById("emailError");
+            emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9-]{2,3}$/;
+
+
+            if (firstName.value == '') {
+                firstNameError.innerHTML = "Please Enter FirstName";
+            } else {
+                if (firstNameRegex.test(firstName.value) == false) {
+                    firstNameError.innerHTML = "Please Enter Valid FirstName";
+
+                } else {
+                    firstNameError.innerHTML = "";
+
+                }
+            }
+
+            if (lastName.value == '') {
+                lastNameError.innerHTML = "Please Enter LastName";
+            } else {
+                if (lastNameRegex.test(lastName.value) == false) {
+                    lastNameError.innerHTML = "Please Enter Valid LastName";
+
+                } else {
+                    lastNameError.innerHTML = "";
+
+                }
+            }
+            
+            if( 8 <= pass.length() && pass.length() <= 32  )
+            {
+               if( pass.matches(".*\\d.*") )
+                  count ++;
+               if( pass.matches(".*[a-z].*") )
+                  count ++;
+               if( pass.matches(".*[A-Z].*") )
+                  count ++;
+               if( pass.matches(".*[*.!@#$%^&(){}[]:";'<>,.?/~`_+-=|\\].*") )
+                  count ++;
+            }
+
+            return count >= 3;
+         }
+            
+            if (email.value == '') {
+                emailError.innerHTML = "Please Enter Email"
+            } else {
+                if (emailRegex.test(email.value) == false) {
+                    emailError.innerHTML = "Please Enter Valid Email"
+                } else {
+                    emailError.innerHTML = ""
+                }
+            }
+        }
+    </script>
+  
 
 </body>
 

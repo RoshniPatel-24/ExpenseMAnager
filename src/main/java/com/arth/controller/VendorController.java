@@ -33,8 +33,8 @@ public class VendorController {
 	public String listVendor(Model model) {
 
 		// pull all category from db-table
-		List<VendorBean> list = vendorDao.getAllVendor();
-		model.addAttribute("list",list);
+		List<VendorBean> vendorlist = vendorDao.getAllVendor();
+		model.addAttribute("vendorlist",vendorlist);
 		return "VendorList";
 	}
 	

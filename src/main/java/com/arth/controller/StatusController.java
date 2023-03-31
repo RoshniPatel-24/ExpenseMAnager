@@ -35,8 +35,8 @@ public class StatusController {
 	public String listStatus(Model model) {
 
 		// pull all category from db-table
-		List<StatusBean> list = statusDao.getAllStatus();
-		model.addAttribute("list",list);
+		List<StatusBean> statuslist = statusDao.getAllStatus();
+		model.addAttribute("statuslist",statuslist);
 		return "ListStatus";
 	}
 	
