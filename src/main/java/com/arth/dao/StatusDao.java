@@ -7,12 +7,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.arth.bean.CategoryBean;
 import com.arth.bean.StatusBean;
-
-
-
-
 
 @Repository
 public class StatusDao{
@@ -51,5 +46,9 @@ public class StatusDao{
 			}
 			return statusBean;
 		}
-
+		// update Status
+		public void updateStatus(StatusBean statusBean) {
+			String updateQuery = "update status set statusName  = ? where statusId = ? ";
+			stmt.update(updateQuery,statusBean.getStatusName(),statusBean.getStatusId());
+		}
 }

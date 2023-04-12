@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.arth.bean.VendorBean;
 import com.arth.dao.VendorDao;
@@ -16,7 +17,6 @@ import com.arth.dao.VendorDao;
 public class VendorController {
 	@Autowired
 	VendorDao vendorDao;
-	private Object vendorID;
 	
 	@GetMapping("/newvendor") // url--browser
 	public String newVendor() { // method
@@ -29,6 +29,8 @@ public class VendorController {
 		vendorDao.addVendor(vendorBean);
 		return "redirect:/listvendor";
 	}
+	
+	//List Vendor 
 	@GetMapping("/listvendor")
 	public String listVendor(Model model) {
 
@@ -38,6 +40,7 @@ public class VendorController {
 		return "VendorList";
 	}
 	
+	//Delete Vendor
 	@GetMapping("/deletevendor/{vendorId}")
 	public String deleteVendor(@PathVariable("vendorId") Integer vendorId) {
 		//12 45 
@@ -45,12 +48,23 @@ public class VendorController {
 		return "redirect:/listvendor";//
 	}
 	
+	//View Vendor
 	@GetMapping("/viewvendor/{vendorId}")
 	public String viewVendor (@PathVariable("vendorId") Integer vendorId,Model model) {
 		VendorBean vendorBean = vendorDao.getVendorById(vendorId);
 		model.addAttribute("vendorBean",vendorBean);
-		return "ViewVendor";
-		
+		return "ViewVendor";	
 	}	
 	
+	@GetMapping("/editvendor")
+	public String editVendor(@RequestParam("vendorId") Integer vendorId,Model model) {
+		VendorBean vendorBean = vendorDao.getVendorById(vendorId);
+		model.addAttribute("vendorBean",vendorBean);
+		return "EditVendor";
+	}
+	@PostMapping("/updatevendor")
+	public String updateVendor(VendorBean vendorBean) {
+		vendorDao.updateVendor(vendorBean);
+		return "redirect:/listvendor";
+	}
 }

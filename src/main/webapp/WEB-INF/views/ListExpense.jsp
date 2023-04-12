@@ -7,12 +7,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Expense Manager	|	List Expense</title>
-<jsp:include page="AdminHeader.jsp"></jsp:include>
+<jsp:include page="UserHeader.jsp"></jsp:include>
 </head>
 <body>
-
-
-<jsp:include page="AdminSidebar.jsp"></jsp:include>
+<jsp:include page="UserSidebar.jsp"></jsp:include>
 
 <main id="main" class="main">
 
@@ -35,7 +33,7 @@
 
 <section class="section">
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-16">
 
 <div class="iconslist" align="right">
         <a href="addexpense">
@@ -80,10 +78,12 @@
 							<td><%=eb.getDate()%></td>
 							<td><%=eb.getDescription()%></td>
 							<td><%=eb.getFirstName()%></td> 
-							<td><a href="deleteexpense/<%=eb.getExpenseId() %>" onclick="return confirm('Are you sure want to delete this record?')">Delete </a>|
-						<a href="viewexpense/<%=eb.getExpenseId() %>">View</a></td>
+							<td><a href="deleteexpense/<%=eb.getExpenseId() %>" onclick="return confirm('Are you sure want to delete this record?')"><i class="bi bi-trash text-danger"></i> </a>|
+						<a href="viewexpense?expenseId=<%=eb.getExpenseId() %>"><i class="bi bi-eye"></i></a>|
+						<a href="editexpense?expenseId=<%=eb.getExpenseId()%>"><i class="bi bi-pencil"></i>   </a>
+						
+						</td>
 						</tr>
-	
 				<%} %>
 				</tbody>
               </table>
@@ -95,8 +95,6 @@
       </div>
     </section>
    </main>
-
-
-
+<jsp:include page="AllJs.jsp"></jsp:include>
 </body>
 </html>

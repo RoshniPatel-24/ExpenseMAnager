@@ -1,7 +1,6 @@
 package com.arth.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -101,7 +100,7 @@ public class SessionController {
 				return "redirect:/admindashboard";
 			} else if (userBean.getRole() == 2) {
 				// buyer
-				return "redirect:/home";
+				return "redirect:/userdashboard";
 			} else {
 				return "404";
 			}
@@ -119,6 +118,7 @@ public class SessionController {
 		return "ForgetPassword";
 	}
 
+	//otp
 	@PostMapping("/sendotpforforgetpassword")
 	public String sendOtpForForgetPassword(ForgetPasswordBean forgetPasswordBean,Model model) {
 		System.out.println(forgetPasswordBean.getEmail());
@@ -129,20 +129,20 @@ public class SessionController {
 			model.addAttribute("error","Invalid Email");
 			return "ForgetPassword";
 		}else {
-			//otp 
+			 
 			//generate otp
 			//int otp = (int)(Math.random()*1000000);
 			
 			String otp  = OtpGenerator.generateOTP(6);
 			userDao.updateOtp(forgetPasswordBean.getEmail(), otp);
+			
 			//user set --> email 
 			//send mail 
 			emailService.sendEmailForForgetPassword(forgetPasswordBean.getEmail(), otp);
 			return "UpdatePassword";
 		}
 	}
-		
-		
+				
 		@PostMapping("/updatemypassword")
 		public String udpateMyPassword(UpdatePasswordBean upBean) {
 			System.out.println(upBean.getEmail());

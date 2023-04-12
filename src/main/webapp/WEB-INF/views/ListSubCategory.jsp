@@ -28,7 +28,7 @@
     </div><!-- End Page Title -->
 
 <h3>List Sub Category</h3>
- 
+
  <%
 	List<SubCategoryBean> subcategorylist =  (List<SubCategoryBean>)request.getAttribute("subcategorylist");
  %>
@@ -66,8 +66,12 @@
 		<td><%=cb.getSubCategoryName() %></td>
 		<td><%=cb.getCategoryName()%></td>
 		<td><%=cb.isDeleted()%></td>
-		<td><a href="deletesubcategory/<%=cb.getSubCategoryId() %>">Delete</a>|
-		<a href="viewsubcategory/<%=cb.getSubCategoryId() %>">View</a></td>
+		<td><a href="deletesubcategory/<%=cb.getSubCategoryId() %>"><i class="bi bi-trash text-danger"></i></a>|
+		<a href="viewsubcategory/<%=cb.getSubCategoryId() %>"><i class="bi bi-eye"></i></a> |
+		<a href="editsubcategory?subCategoryId=<%=cb.getSubCategoryId()%>"><i class="bi bi-pencil"></i>   
+		</a>
+		
+		</td>
 	</tr>
 	
 	<%} %>
@@ -84,6 +88,6 @@
     </section>
    </main>
 
-
+<jsp:include page="AllJs.jsp"></jsp:include>
 </body>
 </html>

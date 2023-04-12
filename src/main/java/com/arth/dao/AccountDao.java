@@ -48,5 +48,9 @@ public class AccountDao {
 				}
 				return accountBean;
 			}
-
+			// update Account
+			public void updateAccount(AccountBean accountBean) {
+				String updateQuery = "update account set accountType  = ? where accountId = ? ";
+				stmt.update(updateQuery,accountBean.getAccountType(),accountBean.getAccountId());
+			}
 }

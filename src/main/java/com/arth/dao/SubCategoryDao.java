@@ -20,7 +20,7 @@ public class SubCategoryDao {
 		
 		String insertQuery = "insert into subcategory (subCategoryName,deleted,categoryId) values (?,?,?) ";
 
-		stmt.update(insertQuery, subCategoryBean.getSubCategoryName(), false,subCategoryBean.getCategoryId());// insert //update //delete
+		stmt.update(insertQuery, subCategoryBean.getSubCategoryName(), false,subCategoryBean.getSubCategoryId());// insert //update //delete
 	}
 
 	public List<SubCategoryBean> getAllSubCategory() {
@@ -33,18 +33,14 @@ public class SubCategoryDao {
 		String updateQuery = "update subcategory set deleted = true where subcategoryId = ?";
 		stmt.update(updateQuery,subCategoryId);	
 	}
+	public SubCategoryBean getSubCategoryById(Integer subCategoryId) {
 
-	public  SubCategoryBean getsubCategoryById(Integer subCategoryID)  {
-		SubCategoryBean subCategoryBean = null;
-		try {
-			subCategoryBean = stmt.queryForObject("select * from subcategory where subCategoryId =?",
-					new BeanPropertyRowMapper<SubCategoryBean>(SubCategoryBean.class),new Object[] {subCategoryID});
-		}catch (Exception e) {
-			System.out.println("SubCategoryDao :: getsubCategoryById()");
-			System.out.println(e.getMessage());
-		}
-		return subCategoryBean;
+		return stmt.queryForObject("select * from subcategory where subCategoryId = ?",
+				new BeanPropertyRowMapper<>(SubCategoryBean.class), new Object[] { subCategoryId });
 	}
 
-	
+	public void updateSubCategory(SubCategoryBean subCategoryBean) {
+		stmt.update("update subCategory set subCategoryName = ? , categoryId = ? where subCategoryId = ? ",
+				subCategoryBean.getSubCategoryName(), subCategoryBean.getCategoryId(), subCategoryBean.getSubCategoryId());
+	}	
 }

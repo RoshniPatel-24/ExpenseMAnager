@@ -8,7 +8,6 @@
 <title>Expense Manager	|	View Category</title>
 </head>
 <body>
-
 <%CategoryBean categoryBean = (CategoryBean)request.getAttribute("categoryBean"); %>
 
 CategoryId:<%=categoryBean.getCategoryId() %><br>

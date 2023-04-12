@@ -15,12 +15,13 @@ public class VendorDao {
 	
 	@Autowired
 	JdbcTemplate stmt;
-	// add
+	// add or Insert Vendor
 			public void addVendor(VendorBean vendorBean) {
 				String insertQuery = "insert into vendor (vendorName,deleted) values (?,?) ";
 
 				stmt.update(insertQuery, vendorBean.getVendorName(), false);// insert //update //delete
 			}
+			
 			public List<VendorBean>getAllVendor() {
 
 				String joinQuery = "select * from vendor where deleted = false";
@@ -30,7 +31,7 @@ public class VendorDao {
 				//c1 c2 c3 
 				
 			}
-			
+			//Delete vendor
 			public void deleteVendor(Integer vendorId) {
 				String updateQuery = "update vendor set deleted = true where vendorId = ?";
 				stmt.update(updateQuery,vendorId);
@@ -48,8 +49,9 @@ public class VendorDao {
 				}
 				return vendorBean;
 			}
-
-
-
-
-}
+			//Update Vendor
+			public void updateVendor(VendorBean vendorBean) {
+				String updateQuery = "update vendor set vendorName = ? where vendorId = ?";
+				stmt.update(updateQuery,vendorBean.getVendorName(),vendorBean.getVendorId());
+			}		
+		}

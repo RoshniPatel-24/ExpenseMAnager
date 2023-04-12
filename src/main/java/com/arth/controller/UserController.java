@@ -6,9 +6,9 @@ package com.arth.controller;
 	@Controller
 	public class UserController {
 
-		@GetMapping("/home")
-		public String home() {
-			return "Home";
+		@GetMapping("/userdashboard")
+		public String userdashboard() {
+			return "UserDashboard";
 		}
 	}
 

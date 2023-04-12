@@ -65,8 +65,13 @@
 		<td><%=cb.getVendorId() %></td>
 		<td><%=cb.getVendorName() %></td>
 		<td><%=cb.getDeleted()%></td>
-		<td><a href="deletevendor/<%=cb.getVendorId() %>">Delete</a>|
-		<a href="viewvendor/<%=cb.getVendorId() %>">View</td>
+		<td><a href="deletevendor/<%=cb.getVendorId() %>"><i class="bi bi-trash text-danger"></i> </a>|
+		<a href="viewvendor/<%=cb.getVendorId() %>"><i class="bi bi-eye"></i> </a>|
+		<a href="editvendor?vendorId=<%=cb.getVendorId()%>"><i class="bi bi-pencil"></i>   </a>
+		
+		
+		
+		</td>
 	</tr>
 	
 	<%} %>
@@ -81,6 +86,6 @@
       </div>
     </section>
    </main>
-
+<jsp:include page="AllJs.jsp"></jsp:include>
 </body>
 </html>

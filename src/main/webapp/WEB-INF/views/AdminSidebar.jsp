@@ -53,7 +53,7 @@
       </li><!-- End List status Nav -->
       
        <li class="nav-item">
-        <a class="nav-link collapsed" href="newaccount">
+        <a class="nav-link " href="newaccount">
           <i class="bi bi-menu-button-wide"></i>
           <span>Add Account Type</span>
         </a>
@@ -80,33 +80,6 @@
         </a>
       </li><!-- End List A T Nav -->
       
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="addexpense">
-          <i class="bi bi-menu-button-wide"></i>
-          <span>Add Expense</span>
-        </a>
-      </li><!-- End New expense Nav -->
-      
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="listexpense">
-          <i class="bi bi-journal-text"></i>
-          <span>List Expense</span>
-        </a>
-      </li><!-- End List Expense -->
-      
-     <li class="nav-item">
-        <a class="nav-link collapsed" href="addincome">
-          <i class="bi bi-menu-button-wide"></i>
-          <span>Add Income</span>
-        </a>
-      </li><!-- End New expense Nav -->
-      
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="listincome">
-          <i class="bi bi-journal-text"></i>
-          <span>List Income</span>
-        </a>
-      </li><!-- End List Expense -->
       
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">

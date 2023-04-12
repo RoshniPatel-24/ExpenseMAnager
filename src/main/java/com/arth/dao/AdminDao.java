@@ -11,9 +11,9 @@ public class AdminDao {
 	@Autowired
 	JdbcTemplate stmt;
 
-	public Integer getTotalOrderCountForCurrentDate() {
+  public Integer getTotalExpenseCountForCurrentDate() {
 
-		String countQuery = "select count(*) from orders where orderDate = ?";
+		String countQuery = "select count(*) from expense where date = ?";
 
 		// dd-mm-yyyy
 
@@ -25,18 +25,18 @@ public class AdminDao {
 
 		String today = "";
 
-		if (mmm < 10) {
-			today = ddd + "-0" + mmm + "-" + yyy;
+	if (mmm < 10) {
+			today = yyy+ "-0" + mmm + "-"  + ddd;
 		} else {
-			today = ddd + "-" + mmm + "-" + yyy;
+			today = yyy+ "-" + mmm + "-"  + ddd;
 		}
-		System.out.println("TODAY => " + today);
+	System.out.println("TODAY => " + today);
 
 		return stmt.queryForObject(countQuery, Integer.class, new Object[] { today });
 
 	}
 
-	public Integer getTotalUserCountForCurrentYear() {
+	public Integer getTotalUsersCountForCurrentYear() {
 
 		String countQuery = "select count(*) from users where createdAt like ?";
 
@@ -50,12 +50,12 @@ public class AdminDao {
 
 		System.out.println("CURRENT YEAR => " + today);
 
-		return stmt.queryForObject(countQuery, Integer.class, new Object[] { today });
+	return stmt.queryForObject(countQuery, Integer.class, new Object[] { today });
 	}
 
-	public Integer getSumOfOrderAmountForCurrentDate() {
+	public Integer getSumOfExpenseAmountForCurrentDate() {
 
-		String countQuery = "select sum(totalAmount) from orders where orderDate = ?";
+		String countQuery = "select sum(amount) from expense where date = ?";
 
 		// dd-mm-yyyy
 
@@ -65,16 +65,16 @@ public class AdminDao {
 		int mmm = c.get(Calendar.MONTH) + 1;
 		int yyy = c.get(Calendar.YEAR);
 
-		String today = "";
+	String today = "";
 
 		if (mmm < 10) {
-			today = ddd + "-0" + mmm + "-" + yyy;
+			today = yyy+ "-0" + mmm + "-"  + ddd ;
 		} else {
-			today = ddd + "-" + mmm + "-" + yyy;
-		}
+			today = yyy+ "-" + mmm + "-"  + ddd;
+	}
 		System.out.println("TODAY => " + today);
 
 		return stmt.queryForObject(countQuery, Integer.class, new Object[] { today });
 
-	}
+}
 }

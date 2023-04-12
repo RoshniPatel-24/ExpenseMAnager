@@ -13,6 +13,7 @@ public class IncomeBean {
 	private String statusId;
 	private Integer amount;
 	private Boolean deleted;
+	
 	public Integer getIncomeId() {
 		return incomeId;
 	}

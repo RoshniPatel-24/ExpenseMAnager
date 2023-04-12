@@ -4,6 +4,7 @@ public class AccountBean {
 	private Integer accountId;
 	private String accountType;
 	private Boolean deleted;
+	
 	public Integer getAccountId() {
 		return accountId;
 	}

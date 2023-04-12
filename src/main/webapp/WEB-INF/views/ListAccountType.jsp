@@ -64,8 +64,10 @@
 		<td><%=cb.getAccountId() %></td>
 		<td><%=cb.getAccountType() %></td>		
 		<td><%=cb.getDeleted()%></td>
-		<td><a href="deleteaccount/<%=cb.getAccountId() %>">Delete</a> |
-		<a href="viewaccount/<%=cb.getAccountId() %>">View</td>
+		<td><a href="deleteaccount/<%=cb.getAccountId() %>"><i class="bi bi-trash text-danger"></i></a> |
+		<a href="viewaccount/<%=cb.getAccountId() %>"><i class="bi bi-eye"></i>|
+		<a href="editaccount?accountId=<%=cb.getAccountId()%>"><i class="bi bi-pencil"></i>   </a>
+		</td>
 	</tr>
 	
 	<%} %>
@@ -81,6 +83,6 @@
     </section>
    </main>
 
-
+<jsp:include page="AllJs.jsp"></jsp:include>
 </body>
 </html>

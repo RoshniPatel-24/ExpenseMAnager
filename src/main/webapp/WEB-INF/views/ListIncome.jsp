@@ -7,12 +7,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Expense Manager	|	List Income</title>
-<jsp:include page="AdminHeader.jsp"></jsp:include>
+<jsp:include page="UserHeader.jsp"></jsp:include>
 </head>
 <body>
-
-
-<jsp:include page="AdminSidebar.jsp"></jsp:include>
+<jsp:include page="UserSidebar.jsp"></jsp:include>
 
 <main id="main" class="main">
 
@@ -38,7 +36,7 @@
         <div class="col-lg-12">
 
 <div class="iconslist" align="right">
-        <a href="addexpense">
+        <a href="addincome">
           <i class="bi bi-plus-square-fill"></i>
           </a> 
         </div>
@@ -54,42 +52,41 @@
                     <th scope="col">IncomeId</th>
                     <th scope="col">Title</th>                                        
      				<th scope="col">Date</th>
-     				<th scope="col">UserId</th>
-     				<th scope="col">AccountId</th>
+     				<th scope="col">UserName</th>
+     				<th scope="col">AccountType</th>
      				<th scope="col">Description</th>
-     				<th scope="col">StatusId</th>
+     				<th scope="col">StatusName</th>
                     <th scope="col">Amount</th>  
                     <th scope="col">Action</th>                    
                   </tr>
                 </thead>
                 <tbody>
 
-				<%for(IncomeBean eb:incomelist){ %>
+				<%for(IncomeBean ib:incomelist){ %>
 						<tr>
-							<td><%=eb.getIncomeId()%></td>
-							<td><%=eb.getTitle()%></td> 
-							<td><%=eb.getDate()%></td>
-							<td><%=eb.getAccountId()%> </td>
-							<td><%=eb.getDescription()%></td>
-							<td><%=eb.getStatusId()%></td>
-							<td><%=eb.getAmount()%></td>
-							<td><a href="deleteincome/<%=eb.getIncomeId() %>" onclick="return confirm('Are you sure want to delete this record?')">Delete </a>|
-						<a href="viewincome/<%=eb.getIncomeId() %>">View</a></td>
+							<td><%=ib.getIncomeId()%></td>
+							<td><%=ib.getTitle()%></td> 
+							<td><%=ib.getDate()%></td>					
+							<td><%=ib.getFirstName()%></td>							
+							<td><%=ib.getAccountType()%> </td>
+							<td><%=ib.getDescription()%></td>
+							<td><%=ib.getStatusName()%></td>
+							<td><%=ib.getAmount()%></td>
+							<td><a href="deleteincome/<%=ib.getIncomeId()%>" onclick="return confirm('Are you sure want to delete this record?')"><i class="bi bi-trash text-danger"></i> </a>|
+						<a href="viewincome?incomeId=<%=ib.getIncomeId() %>"><i class="bi bi-eye"></i></a> |
+						<a href="editincome?incomeId=<%=ib.getIncomeId()%>"><i class="bi bi-pencil"></i>   </a>
+						</td>
 						</tr>
-	
-				<%} %>
+					<%} %>
 				</tbody>
               </table>
               <!-- End Table with stripped rows -->
-
             </div>
           </div>
         </div>
       </div>
     </section>
    </main>
-
-
-
+   <jsp:include page="AllJs.jsp"></jsp:include>
 </body>
 </html>

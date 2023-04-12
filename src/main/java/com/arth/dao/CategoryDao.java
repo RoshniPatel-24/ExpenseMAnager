@@ -14,7 +14,7 @@ public class CategoryDao {
 	@Autowired
 	JdbcTemplate stmt;
 
-	// add
+	// add category
 	public void addCategory(CategoryBean categoryBean) {
 		String insertQuery = "insert into category (categoryName,deleted) values (?,?) ";
 
@@ -25,19 +25,16 @@ public class CategoryDao {
 
 		String selectQuery = "select * from category where deleted = false";
 
-		List<CategoryBean> categorylist =  stmt.query(selectQuery, new BeanPropertyRowMapper<CategoryBean>(CategoryBean.class));
-		
-		//c1 c2 c3 
-		
+		List<CategoryBean> categorylist =  stmt.query(selectQuery, new BeanPropertyRowMapper<CategoryBean>(CategoryBean.class));//c1 c2 c3
 		return categorylist;
 	}
-	
+	// delete category
 	public void deleteCategory(Integer categoryId) {
 		String updateQuery = "update category set deleted = true where categoryId = ?";
 		stmt.update(updateQuery,categoryId);	
 	}
 
-	// list
+	// list category
 	public CategoryBean getCategoryById(Integer categoryId) {
 		CategoryBean categoryBean = null;
 		try {
@@ -49,8 +46,9 @@ public class CategoryDao {
 		}
 		return categoryBean;
 	}
-	// update
-
-	// delete
-
+	// update category
+	public void updateCategory(CategoryBean categoryBean) {
+		String updateQuery = "update category set categoryName  = ? where categoryId = ? ";
+		stmt.update(updateQuery,categoryBean.getCategoryName(),categoryBean.getCategoryId());
+	}
 }

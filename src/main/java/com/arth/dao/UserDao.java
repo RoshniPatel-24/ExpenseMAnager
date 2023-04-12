@@ -7,7 +7,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.arth.bean.CategoryBean;
 import com.arth.bean.ForgetPasswordBean;
 import com.arth.bean.LoginBean;
 import com.arth.bean.UpdatePasswordBean;

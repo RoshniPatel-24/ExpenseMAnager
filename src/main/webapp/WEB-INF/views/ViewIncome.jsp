@@ -12,8 +12,13 @@
 <%IncomeBean incomeBean = (IncomeBean)request.getAttribute("incomeBean"); %>
 
 IncomeId:<%=incomeBean.getIncomeId()%><br>
-
-
+Title:<%=incomeBean.getTitle() %><br>
+Date:<%=incomeBean.getDate() %><br>
+UserName:<%=incomeBean.getFirstName() %><br>
+AccountType:<%=incomeBean.getAccountType() %><br>
+Description:<%=incomeBean.getDescription() %><br>
+Status:<%=incomeBean.getStatusName() %><br>
+Amount:<%=incomeBean.getAmount()%><br>
 
 </body>
 </html>

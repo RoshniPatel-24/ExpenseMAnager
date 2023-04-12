@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.arth.bean.SubCategoryBean;
 import com.arth.dao.CategoryDao;
@@ -54,9 +55,25 @@ CategoryDao categoryDao;
 	}
 	@GetMapping("/viewsubcategory/{subCategoryId}")
 	public String viewSubCategory (@PathVariable("subCategoryId") Integer subCategoryID,Model model) {
-		SubCategoryBean subCategoryBean = subCategoryDao.getsubCategoryById(subCategoryID);
+		SubCategoryBean subCategoryBean = subCategoryDao.getSubCategoryById(subCategoryID);
 		model.addAttribute("subCategoryBean",subCategoryBean);
-		return "ViewSubCategory";
-		
+		return "ViewSubCategory";	
 	}
+	
+	@GetMapping("/editsubcategory")
+	public String editSubCategory(@RequestParam("subCategoryId") Integer subCategoryId,Model model) {
+
+		SubCategoryBean subCategoryBean = subCategoryDao.getSubCategoryById(subCategoryId);
+		model.addAttribute("subCategoryBean",subCategoryBean);
+		model.addAttribute("categorylist", categoryDao.getAllCategory());
+		return "EditSubCategory";
+	}
+
+	@PostMapping("/updatesubcategory")
+	public String updateSubCategory(SubCategoryBean subCategoryBean) {
+		subCategoryDao.updateSubCategory(subCategoryBean);
+		
+		return "redirect:/listsubcategories";
+	}
+
 }

@@ -44,7 +44,7 @@
                  <div class="col-md-4">
                   <div class="form-floating mb-3">
                     <select class="form-select" id="floatingSelect" aria-label="Category" name="categoryId">
-                          
+                       <option value="-1">Select Category</option>   
 						<%
 							for (CategoryBean cb : categorylist) {
 						%>

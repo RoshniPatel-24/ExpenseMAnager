@@ -30,15 +30,6 @@ public class ExpenseDao {
 		return stmt.query(joinQuery, new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class));
 	}
 
-	/*
-	 * public List<ExpenseBean>getAllExpense(){
-	 * 
-	 * String joinQuery = "select * from expense where deleted =false";
-	 * 
-	 * return stmt.query (joinQuery,new
-	 * BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class));
-	 */
-
 	public void deleteexpense(Integer expenseId) {
 		String updateQuery = "update expense set deleted = true where expenseId= ?";
 		stmt.update(updateQuery, expenseId);
@@ -47,7 +38,7 @@ public class ExpenseDao {
 	public ExpenseBean getExpenseById(Integer expenseId) {
 		ExpenseBean expenseBean = null;
 		try {
-			expenseBean = stmt.queryForObject("select * from expense where expenseId=?",
+			expenseBean = stmt.queryForObject("select e.*, c.categoryName ,sc.subCategoryName, v.vendorName, ac.accountType, s.statusName, u.firstName from expense e ,  subCategory sc, vendor v, account ac, status s,users u,category c Where c.categoryId=e.categoryId and v.vendorId=e.vendorId and  sc.subcategoryId =  e.subcategoryId and u.userId= e.userId and ac.accountId= e.accountId and s.statusId=e.statusId  and e.deleted = false and expenseId=?",
 					new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class), new Object[] { expenseId });
 		} catch (Exception e) {
 			System.out.println("ExpenseDao :: getExpenseById()");
@@ -55,5 +46,9 @@ public class ExpenseDao {
 		}
 		return expenseBean;
 	}
-
+	//Update Expense
+	public void updateExpense (ExpenseBean expenseBean) {
+		stmt.update("update expense set title=?, categoryId = ? , subCategoryId=  ? , statusId = ? , vendorId = ? , accountId = ?, amount = ? , date= ? ,description = ?,userId = ? where expenseId = ?",
+		expenseBean.getTitle(),expenseBean.getCategoryId(),expenseBean.getSubCategoryId(),expenseBean.getStatusId(),expenseBean.getVendorId(),expenseBean.getAccountId(),expenseBean.getAmount(),expenseBean.getDate(),expenseBean.getDescription(),expenseBean.getUserId(),expenseBean.getExpenseId());
+	}
 }

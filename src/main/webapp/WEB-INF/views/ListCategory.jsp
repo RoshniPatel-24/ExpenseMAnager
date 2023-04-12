@@ -63,60 +63,19 @@
                    		<td><%=cb.getCategoryId() %></td>
 						<td><%=cb.getCategoryName() %></td>
 						<td><%=cb.getDeleted()%></td>
-						<td><a href="deletecategory/<%=cb.getCategoryId() %>">Delete</a> |
-						<a href="viewcategory/<%=cb.getCategoryId() %>">View</a></td>
-                  </tr>
-                  
-                  <%} %>
-                  
+						<td><a href="deletecategory/<%=cb.getCategoryId() %>"><i class="bi bi-trash text-danger"></i></a> |
+						<a href="viewcategory/<%=cb.getCategoryId() %>"><i class="bi bi-eye"></i></a> |						
+					    <a href="editcategory?categoryId=<%=cb.getCategoryId()%>"><i class="bi bi-pencil"></i>   </a></td>
+                  </tr>                  
+                  <%} %>                  
                 </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
-
+              </table>    <!-- End Table with stripped rows -->             
             </div>
           </div>
         </div>
       </div>
     </section>
    </main>
-  
-</body>
+   <jsp:include page="AllJs.jsp"></jsp:include>
+  </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-<!--  <h3>List Category</h3>
- 
- 
-
-<table border="1">
-
-	<tr>
-		<th>CategoryId</th>
-		<th>CategoryName</th>
-		<th>Deleted?</th>
-		<th>Action</th>
-	</tr>
-
-
-
-
-	<tr>
-		
-	</tr>
-	
-	
-	
-
-</table>
-
-<a href="admindashboard">Admin Dashboard</a> -->
-

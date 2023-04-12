@@ -64,8 +64,11 @@
 							<td><%=cb.getStatusId() %></td>
 							<td><%=cb.getStatusName() %></td>
 							<td><%=cb.getDeleted()%></td>
-							<td><a href="deletestatus/<%=cb.getStatusId() %>">Delete </a>|
-						<a href="viewstatus/<%=cb.getStatusId() %>">View</a></td>
+							<td><a href="deletestatus/<%=cb.getStatusId() %>"><i class="bi bi-trash text-danger"></i> </a>|
+						<a href="viewstatus/<%=cb.getStatusId() %>"><i class="bi bi-eye"></i></a>|
+						<a href="editstatus?statusId=<%=cb.getStatusId()%>"><i class="bi bi-pencil"></i>   </a>
+						
+						</td>
 						</tr>
 	
 				<%} %>
@@ -79,6 +82,6 @@
       </div>
     </section>
    </main>
-
+<jsp:include page="AllJs.jsp"></jsp:include>
 </body>
 </html>
