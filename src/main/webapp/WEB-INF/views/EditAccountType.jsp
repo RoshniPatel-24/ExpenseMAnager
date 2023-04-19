@@ -45,6 +45,7 @@
             </div>
           </div>
          </main><!-- End #main -->  
+     <jsp:include page="AdminFooter.jsp"></jsp:include>
     
 </body>
 </html>

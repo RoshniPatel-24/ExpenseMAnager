@@ -19,6 +19,7 @@ AccountType:<%=incomeBean.getAccountType() %><br>
 Description:<%=incomeBean.getDescription() %><br>
 Status:<%=incomeBean.getStatusName() %><br>
 Amount:<%=incomeBean.getAmount()%><br>
+ <jsp:include page="AdminFooter.jsp"></jsp:include>
 
 </body>
 </html>

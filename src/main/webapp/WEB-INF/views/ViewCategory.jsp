@@ -12,6 +12,7 @@
 
 CategoryId:<%=categoryBean.getCategoryId() %><br>
 CategoryName:<%=categoryBean.getCategoryName()%><br>
+ <jsp:include page="AdminFooter.jsp"></jsp:include>
 
 </body>
 </html>

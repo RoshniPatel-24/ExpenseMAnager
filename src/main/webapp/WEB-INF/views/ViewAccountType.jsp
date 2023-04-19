@@ -13,6 +13,7 @@
 
 AccountId:<%=accountBean.getAccountId()%><br>
 AccountName:<%=accountBean.getAccountType()%><br>
+ <jsp:include page="AdminFooter.jsp"></jsp:include>
 
 </body>
 </html>

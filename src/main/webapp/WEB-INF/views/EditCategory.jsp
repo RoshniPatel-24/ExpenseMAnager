@@ -48,6 +48,8 @@
        </div>
 	</div>
  </section>
-</main><!-- End #main -->   
+</main><!-- End #main -->  
+ <jsp:include page="AdminFooter.jsp"></jsp:include>
+ 
 </body>
 </html>

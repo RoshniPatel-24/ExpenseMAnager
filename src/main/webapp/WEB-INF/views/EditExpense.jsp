@@ -62,9 +62,9 @@
                  
                <form action="updateexpense" method="post" class="row g-3">
                <input type = "hidden" name="expenseId" value="<%=expenseBean.getExpenseId() %>">
-               
+               <input type = "hidden" name="userId" value ="<%=expenseBean.getUserId() %>">
          
-         <div class="col-md-4">
+         <%-- <div class="col-md-4">
                   <div class="form-floating mb-3">
                   	
                     	<select class="form-select" id="floatingSelect" aria-label="User" name="firstName">
@@ -81,7 +81,8 @@
 					<label for="inputName5" class="form-label">User</label>		
 				 </div>
                 </div>
-          
+         --%>   
+         
                 <div class="col-md-10">
                   <label for="inputName5" class="form-label">Title</label>
                   <input type="text" class="form-control" id="inputName5" name="title" value="<%=expenseBean.getTitle()%>">
@@ -197,6 +198,7 @@
                 </div>	                
               </form><!-- End expense -->
          </main><!-- End #main -->  
+     <jsp:include page="AdminFooter.jsp"></jsp:include>
     
 </body>
 </html>

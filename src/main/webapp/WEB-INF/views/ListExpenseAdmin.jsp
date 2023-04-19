@@ -6,13 +6,13 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Expense Manager	|	List Expense</title>
-<jsp:include page="UserHeader.jsp"></jsp:include>
+<title>Expense Manager	|	List Expense Admin</title>
+<jsp:include page="AdminHeader.jsp"></jsp:include>
 </head>
 <body>
-<jsp:include page="UserSidebar.jsp"></jsp:include>
+<jsp:include page="AdminSidebar.jsp"></jsp:include>
 
-<main id="main" class="main">
+ <main id="main" class="main">
 
     <div class="pagetitle">
       <h1>Dashboard</h1>
@@ -22,8 +22,8 @@
           <li class="breadcrumb-item active">List Expense<li>
         </ol>
       </nav>
-    </div><!-- End Page Title -->
-
+    </div>End Page Title
+ 
 <h3>List Expense</h3>
 
  
@@ -58,8 +58,9 @@
                     <th scope="col">Amount</th>  
                     <th scope="col">StatusName</th>
                     <th scope="col">Date</th>
-<!--                     <th scope="col">Description</th>
-                    <th scope="col">UserName</th> -->
+                <!--<th scope="col">Description</th>
+                    <th scope="col">UserName</th>
+                 -->
                     <th scope="col">Action</th>                    
                   </tr>
                 </thead>
@@ -76,9 +77,10 @@
 							<td><%=eb.getAmount()%></td>
 							<td><%=eb.getStatusName()%></td>
 							<td><%=eb.getDate()%></td>
- 						<%-- 	<td><%=eb.getDescription()%></td>
+ 							<%-- <td><%=eb.getDescription()%></td>
  							<td><%=eb.getFirstName()%></td>
-						 --%>	<td><a href="deleteexpense/<%=eb.getExpenseId() %>" onclick="return confirm('Are you sure want to delete this record?')"><i class="bi bi-trash text-danger"></i> </a>|
+							 --%>
+							<td><a href="deleteexpense/<%=eb.getExpenseId() %>" onclick="return confirm('Are you sure want to delete this record?')"><i class="bi bi-trash text-danger"></i> </a>|
 						<a href="viewexpense?expenseId=<%=eb.getExpenseId() %>"><i class="bi bi-eye"></i></a>|
 						<a href="editexpense?expenseId=<%=eb.getExpenseId()%>"><i class="bi bi-pencil"></i>   </a>
 						

@@ -125,14 +125,11 @@ Password:<input type="password" name="password"><br><br>
                       
                     </div>
                   </form><font color="red">${error}</font>
-                  
-
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </section>
 
     </div>
@@ -152,6 +149,18 @@ Password:<input type="password" name="password"><br><br>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	
+	
+		
+	<%if (request.getAttribute("error") != null) {%>
+	toastr
+	.error("<%=request.getAttribute("error")%>")
+	<%}%>
 
 </body>
 

@@ -2,6 +2,8 @@ package com.arth.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.arth.bean.CategoryBean;
 import com.arth.bean.ExpenseBean;
-import com.arth.bean.UserBean;
 import com.arth.dao.AccountDao;
 import com.arth.dao.CategoryDao;
 import com.arth.dao.ExpenseDao;
@@ -20,8 +21,6 @@ import com.arth.dao.StatusDao;
 import com.arth.dao.SubCategoryDao;
 import com.arth.dao.UserDao;
 import com.arth.dao.VendorDao;
-
-import jakarta.servlet.http.HttpSession;
 
 
 @Controller
@@ -46,7 +45,6 @@ public class ExpenseController {
 		List<CategoryBean> categorylist = categoryDao.getAllCategory();
 		model.addAttribute("userlist",userDao.getAllUser());
 		model.addAttribute("categorylist",categorylist);
-		UserBean user = (UserBean) session.getAttribute("user");
 		model.addAttribute("subcategorylist",subCategoryDao.getAllSubCategory());
 		model.addAttribute("statuslist",statusDao.getAllStatus());
 		model.addAttribute("accountlist",accountDao.getAllAccount());
@@ -105,13 +103,9 @@ public class ExpenseController {
 
 	@PostMapping("/updateexpense")
 	public String updateExpense(ExpenseBean expenseBean) {
+		 
 		
-		int userId = -1;
-		
-		//cookies
-		
-		expenseBean.setUserId(userId);
-		
+		 System.out.println("userId =>"+expenseBean.getUserId());
 		expenseDao.updateExpense(expenseBean);
 		return "redirect:/listexpense";
 	}

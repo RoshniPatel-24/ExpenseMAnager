@@ -1,5 +1,9 @@
 package com.arth.controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +17,6 @@ import com.arth.bean.UserBean;
 import com.arth.dao.UserDao;
 import com.arth.service.EmailService;
 import com.arth.util.OtpGenerator;
-
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 //annotation 
 @Controller
@@ -91,7 +91,7 @@ public class SessionController {
 			
 			//session
 			session.setAttribute("userID", userBean.getUserId());
-			
+			session.setAttribute("user", userBean);
 			//max inactive interval time
 			session.setMaxInactiveInterval(60*5);//second
 			

@@ -14,6 +14,7 @@
 SubCategoryId:<%=subCategoryBean.getSubCategoryId()%><br>
 CategoryId:<%=subCategoryBean.getCategoryId()%><br>
 SubCategoryName:<%=subCategoryBean.getSubCategoryName()%><br>
+ <jsp:include page="AdminFooter.jsp"></jsp:include>
 
 </body>
 </html>

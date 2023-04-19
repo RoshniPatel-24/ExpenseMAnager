@@ -6,9 +6,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Expense Manager	|	View Expense</title>
-<jsp:include page="UserHeader.jsp"></jsp:include>
+<jsp:include page="AdminHeader.jsp"></jsp:include>
 </head>
 <body>
+<jsp:include page="AdminSidbar.jsp"></jsp:include>
 
 <%ExpenseBean expenseBean = (ExpenseBean)request.getAttribute("expenseBean"); %>
 
@@ -22,5 +23,7 @@ Status:<%=expenseBean.getStatusName()%><br>
 Date:<%=expenseBean.getDate()%><br>
 Description:<%=expenseBean.getDescription()%><br>
 UserName:<%=expenseBean.getFirstName()%><br>
+ <jsp:include page="AdminFooter.jsp"></jsp:include>
+
 </body>
 </html>

@@ -1,3 +1,6 @@
+<%@page import="com.arth.bean.IncomeChartBean"%>
+<%@page import="java.util.List"%>
+<%@page import="com.arth.bean.ExpenseChartBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!--  <!DOCTYPE html>
@@ -37,41 +40,54 @@
 </body>
 </html>-->
 
+
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="ISO-8859-1">
+<title>Admin Dashboard</title>
+<jsp:include page="AllCss.jsp"></jsp:include>
 
-<jsp:include page="AdminHeader.jsp"></jsp:include>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 <body>
 
+<jsp:include page="AdminHeader.jsp"></jsp:include>
 <jsp:include page="AdminSidebar.jsp"></jsp:include>
-
-
 <main id="main" class="main">
+<div class="pagetitle">
+      <h1>Add Income</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
+          <li class="breadcrumb-item active">Add Income</li>
+        </ol>
+      </nav>
+    </div>
+
+<!-- Start Dashbord-->
+<!-- <main id="main" class="main">
 
     <div class="pagetitle">
       <h1>Dashboard</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../admindashboard">Home</a></li>
           <li class="breadcrumb-item active">Dashboard</li>
         </ol>
       </nav>
-    </div><!-- End Page Title -->
-    
-
+    </div> --><!-- End Page Title -->
 
     <section class="section dashboard">
       <div class="row">
 
         <!-- Left side columns -->
-        <div class="col-lg-8">
+        <div class="col-lg-12">
           <div class="row">
 
-            <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-6">
+            <!-- Transaction Card -->
+            <div class="col-xxl-3 col-md-3">
               <div class="card info-card sales-card">
 
                 <div class="filter">
@@ -88,25 +104,25 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Expense <span>| Today</span></h5>
+                  <h5 class="card-title">Transaction <span>| Today</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-cart"></i>
+                      <i class="bi bi-arrow-left-right"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>${totalExpense}</h6>
+                      <h6>${totalTransaction}</h6>
                       <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
 
-                    </div>
+                    </div> 
                   </div>
                 </div>
 
               </div>
-            </div><!-- End Sales Card -->
+            </div><!-- End Transaction Card -->
 
-            <!-- Revenue Card -->
-            <div class="col-xxl-4 col-md-6">
+            <!-- Expanse Card -->
+            <div class="col-xxl-3 col-md-3">
               <div class="card info-card revenue-card">
 
                 <div class="filter">
@@ -121,16 +137,17 @@
                     <li><a class="dropdown-item" href="#">This Year</a></li>
                   </ul>
                 </div>
-
+                
+                 
                 <div class="card-body">
-                  <h5 class="card-title">Revenue <span>| This Month</span></h5>
+                  <h5 class="card-title">Expanse <span>| This Month</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-currency-dollar"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>${totalRevenue==null?0:totalRevenue}</h6>
+                      <h6>${totalExpanse==null?0:totalExpanse}</h6>
                       <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
 
                     </div>
@@ -138,10 +155,10 @@
                 </div>
 
               </div>
-            </div><!-- End Revenue Card -->
+            </div><!-- End Expanse Card -->
 
-            <!-- Customers Card -->
-            <div class="col-xxl-4 col-xl-12">
+            <!-- Income Card -->
+            <div class="col-xxl-3 col-md-3">
 
               <div class="card info-card customers-card">
 
@@ -159,14 +176,14 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Customers <span>| This Year</span></h5>
+                  <h5 class="card-title">Income <span>| This Year</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
+                      <i class="bi bi-cash-coin"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>${totalUsers}</h6>
+                      <h6>${totalIncome==null?0:totalIncome}</h6>
                       <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
 
                     </div>
@@ -175,17 +192,16 @@
                 </div>
               </div>
 
-            </div><!-- End Customers Card -->
 
+            </div><!-- End  Card -->
+            
+            
+              
+            
+            <!-- User Card -->
+            <div class="col-xxl-3 col-md-3">
 
-
-
-
-
-
- <!-- Reports -->
-            <div class="col-12">
-              <div class="card">
+              <div class="card info-card customers-card">
 
                 <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -201,173 +217,265 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Reports <span>/Today</span></h5>
+                  <h5 class="card-title">Users <span>| This Year</span></h5>
 
-                  <!-- Line Chart -->
-                  <div id="reportsChart"></div>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-people"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>${sumOfUsers==null?0:sumOfUsers}</h6>
+                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
 
-                  <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                      new ApexCharts(document.querySelector("#reportsChart"), {
-                        series: [{
-                          name: 'Sales',
-                          data: [31, 40, 28, 51, 42, 82, 56],
-                        }, {
-                          name: 'Revenue',
-                          data: [11, 32, 45, 32, 34, 52, 41]
-                        }, {
-                          name: 'Customers',
-                          data: [15, 11, 32, 18, 9, 24, 11]
-                        }],
-                        chart: {
-                          height: 350,
-                          type: 'area',
-                          toolbar: {
-                            show: false
-                          },
-                        },
-                        markers: {
-                          size: 4
-                        },
-                        colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                        fill: {
-                          type: "gradient",
-                          gradient: {
-                            shadeIntensity: 1,
-                            opacityFrom: 0.3,
-                            opacityTo: 0.4,
-                            stops: [0, 90, 100]
-                          }
-                        },
-                        dataLabels: {
-                          enabled: false
-                        },
-                        stroke: {
-                          curve: 'smooth',
-                          width: 2
-                        },
-                        xaxis: {
-                          type: 'datetime',
-                          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                        },
-                        tooltip: {
-                          x: {
-                            format: 'dd/MM/yy HH:mm'
-                          },
-                        }
-                      }).render();
-                    });
-                  </script>
-                  <!-- End Line Chart -->
+                    </div>
+                  </div>
 
                 </div>
-
               </div>
-            </div><!-- End Reports -->
-            
-            
-            
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="assets/vendor/echarts/echarts.min.js"></script>
-  <script src="assets/vendor/quill/quill.min.js"></script>
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+            </div><!-- End User Card -->
+                        
+             
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+            <!-- Reports -->
+            <div class="col-md-12">
+              <div class="card">
 
-            
+                
+                <div class="card-body">
+                  <h5 class="card-title">Expanse-BarChart</h5>
+                  
+                  <%
+				List<ExpenseChartBean> chartData = (List<ExpenseChartBean>) request.getAttribute("chartData");
+                  List<IncomeChartBean> chartData1 = (List<IncomeChartBean>) request.getAttribute("chartData1");
+				%>
 
-            
-           
-         </div>
-        </div><!-- End Left side columns -->
+                  <!-- Line Chart -->
+                  <div>
+                  <canvas id="Expansechart" ></canvas>
+                  </div>
+                  
+                  <script>
+								 colorArray =  [
+								      'rgba(255, 99, 132, 0.2)',
+								      'rgba(255, 159, 64, 0.2)',
+								      'rgba(255, 205, 86, 0.2)',
+								      'rgba(75, 192, 192, 0.2)',
+								      'rgba(54, 162, 235, 0.2)',
+								      'rgba(153, 102, 255, 0.2)',
+								      'rgba(201, 203, 207, 0.2)',
+								      'rgba(230, 125, 57, 0.2)',
+								      'rgba(125, 230, 57, 0.2)',
+								      'rgba(112, 150, 110, 0.2)',
+								      'rgba(55, 55, 55, 0.2)',
+								      'rgba(66, 66, 66, 0.2)'
+								      
+								    ]
+								 
+								 bgColor = [];
+								 
+										<%for(int i=0;i<chartData.size();i++){%>
+										
+											bgColor.push(colorArray[<%=i%>]);
+										<%}%>
+								
+									const ctx = document
+											.getElementById('Expansechart');
+									new Chart(
+											ctx,
+											{
+												type : 'bar',
+												data : {
+													labels : [ 
+														<%for (ExpenseChartBean e : chartData) {%>
+														 '<%=e.getMonth()%>',
+															<%}%>],
+													datasets : [ {
+														label : 'Total ExpanseAmount',
+														data : [
+															<%for (ExpenseChartBean e : chartData) {%>
+																	<%=e.getExpanseAmount()%>,
+															<%}%>
+															],
+															backgroundColor:bgColor
+															,
+														borderWidth : 1
+													} ]
+												},
+												options : {
+													responsive:true,
+													scales : {
+														y : {
+															beginAtZero : true
+														}
+													}
+												}
+											});
+                  
+									</script>
 
-        <!-- Right side columns -->
-        <div class="col-lg-4">
+                 
+        				</div>
+       			 </div>
+		</div>
+		
+		
+		
+<div class="col-12">
+              <div class="card">
 
-          <!-- Recent Activity -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
+                
+                <div class="card-body">
+                  <h5 class="card-title">Income BarChart</h5>
+                  
+                  <%
+				
+				%>
 
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
+                  <!-- Line Chart -->
+                  <div>
+                  <canvas id="Incomechart"></canvas>
+                  </div>
+                  
+                  <script>
+								 colorArray =  [
+								      'rgba(255, 99, 132, 0.2)',
+								      'rgba(255, 159, 64, 0.2)',
+								      'rgba(255, 205, 86, 0.2)',
+								      'rgba(75, 192, 192, 0.2)',
+								      'rgba(54, 162, 235, 0.2)',
+								      'rgba(153, 102, 255, 0.2)',
+								      'rgba(201, 203, 207, 0.2)',
+								      'rgba(230, 125, 57, 0.2)',
+								      'rgba(125, 230, 57, 0.2)',
+								      'rgba(112, 150, 110, 0.2)',
+								      'rgba(55, 55, 55, 0.2)',
+								      'rgba(66, 66, 66, 0.2)'
+								      
+								    ]
+								 
+								 bgColor = [];
+								 
+										<%for(int i=0;i<chartData1.size();i++){%>
+										
+											bgColor.push(colorArray[<%=i%>]);
+										<%}%>
+								
+									const ctx1 = document
+											.getElementById('Incomechart');
+									new Chart(
+											ctx1,
+											{
+												type : 'bar',
+												data : {
+													labels : [ 
+														<%for (IncomeChartBean e : chartData1) {%>
+														 '<%=e.getMonth()%>',
+															<%}%>],
+													datasets : [ {
+														label : 'Total IncomeAmount',
+														data : [
+															<%for (IncomeChartBean e : chartData1) {%>
+																	<%=e.getIncomeAmount()%>,
+															<%}%>
+															],
+															backgroundColor:bgColor
+															,
+														borderWidth : 1
+													} ]
+												},
+												options : {
+													scales : {
+														y : {
+															beginAtZero : true
+														}
+													}
+												}
+											});
+                  
+									</script>
 
+                 
+        				</div>
+       			 </div>
+		</div>
+		
+		
+<div class="col-12">
+              <div class="card">
+
+                
+                <div class="card-body">
+                  <h5 class="card-title">Expanse PieChart</h5>		
+		
+
+<%
+				List<ExpenseChartBean> pieChartData = (List<ExpenseChartBean>) request.getAttribute("pieChartData");
+				%>
+                    
+<div class="card">
             <div class="card-body">
-              <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+              <h5 class="card-title">Pie Chart</h5>
 
-              <div class="activity">
+              <!-- Bar Chart -->
+              <canvas id="barChart" style="max-height: 400px; display: block; box-sizing: border-box; height: 400px; width: 884px;" width="1106" height="500"></canvas>
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  new Chart(document.querySelector('#barChart'), {
+                    type: 'pie',
+                    data: {
+                      labels: [<%for (ExpenseChartBean e : pieChartData) {%>
+						 '<%=e.getCategoryName() %>',
+							<%}%>],
+                      datasets: [{
+                        label: 'Pie Chart',
+                        data: [<% for (ExpenseChartBean e : pieChartData) {%>
+                        <%=e.getExpanseAmount() %>',
+						<%}%>],
+                        backgroundColor: [
+                          'rgba(255, 99, 132, 0.2)',
+                          'rgba(255, 159, 64, 0.2)',
+                          'rgba(255, 205, 86, 0.2)',
+                          'rgba(75, 192, 192, 0.2)',
+                          'rgba(54, 162, 235, 0.2)',
+                          'rgba(153, 102, 255, 0.2)',
+                          'rgba(201, 203, 207, 0.2)'
+                        ],
+                        borderColor: [
+                          'rgb(255, 99, 132)',
+                          'rgb(255, 159, 64)',
+                          'rgb(255, 205, 86)',
+                          'rgb(75, 192, 192)',
+                          'rgb(54, 162, 235)',
+                          'rgb(153, 102, 255)',
+                          'rgb(201, 203, 207)'
+                        ],
+                        borderWidth: 1
+                      }]
+                    },
+                    options: {
+                      scales: {
+                        y: {
+                          beginAtZero: true
+                        }
+                      }
+                    }
+                  });
+                });
+              </script>	
+        	  </div>
+       		 </div>
+		   </div>
+		 </div>
+		</div>
+      </div>
+    </section>
 
-                <div class="activity-item d-flex">
-                  <div class="activite-label">32 min</div>
-                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                  <div class="activity-content">
-                    Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
-                  </div>
-                </div><!-- End activity item-->
+  </main>
+  
+  <!-- End Dashbord-->
 
-                <div class="activity-item d-flex">
-                  <div class="activite-label">56 min</div>
-                  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                  <div class="activity-content">
-                    Voluptatem blanditiis blanditiis eveniet
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">2 hrs</div>
-                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                  <div class="activity-content">
-                    Voluptates corrupti molestias voluptatem
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">1 day</div>
-                  <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                  <div class="activity-content">
-                    Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">2 days</div>
-                  <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                  <div class="activity-content">
-                    Est sit eum reiciendis exercitationem
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">4 weeks</div>
-                  <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                  <div class="activity-content">
-                    Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                  </div>
-                </div><!-- End activity item-->
-
-              </div>
-
-            </div>
-          </div><!-- End Recent Activity -->
-          
- </main><!-- End #main -->          
-          
- <jsp:include page="AdminFooter.jsp"></jsp:include>
+<jsp:include page="AdminFooter.jsp"></jsp:include>
 
 </body>
 </html>

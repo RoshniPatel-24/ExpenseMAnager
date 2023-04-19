@@ -13,6 +13,7 @@
 
 VendorId:<%=vendorBean.getVendorId()%><br>
 VendorName:<%=vendorBean.getVendorName()%><br>
+ <jsp:include page="AdminFooter.jsp"></jsp:include>
 
 </body>
 </html>

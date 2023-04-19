@@ -58,8 +58,8 @@
               <!--Add Expense Form --> 
                  
                <form action="saveexpense" method="post" class="row g-3">
-               
-               <div class="form-floating mb-3">
+               <input type="hidden" name="userId" value="${user.userId}"/>
+              <%--  <div class="form-floating mb-3">
                     	<select class="form-select" id="floatingSelect" aria-label="Account" name="userId">
                           <option value="-1">User Name</option>
                 		<%
@@ -72,8 +72,7 @@
 					</select>
 					<label for="inputName5" class="form-label">Your Name</label>		
 				 </div>
-                
-               
+                 --%>
                 <div class="col-md-10">
                   <label for="inputName5" class="form-label">Title</label>
                   <input type="text" class="form-control" id="inputName5" name="title">
@@ -186,6 +185,7 @@
 	                
               </form><!-- End expense -->
          </main><!-- End #main -->  
+     <jsp:include page="AdminFooter.jsp"></jsp:include>
     
 </body>
 </html>

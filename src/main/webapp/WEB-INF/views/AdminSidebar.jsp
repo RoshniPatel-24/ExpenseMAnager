@@ -80,6 +80,21 @@
         </a>
       </li><!-- End List A T Nav -->
       
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="listexpense">
+          <i class="bi bi-journal-text"></i>
+          <span>List Expense</span>
+        </a>
+      </li><!-- End List Expense Nav -->
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="listincome">
+          <i class="bi bi-journal-text"></i>
+          <span>List income</span>
+        </a>
+      </li><!-- End List income Nav -->
+      
+      
       
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">

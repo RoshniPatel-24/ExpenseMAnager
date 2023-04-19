@@ -77,5 +77,7 @@
     </section>
    </main>
    <jsp:include page="AllJs.jsp"></jsp:include>
+    <jsp:include page="AdminFooter.jsp"></jsp:include>
+   
   </body>
 </html>

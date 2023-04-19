@@ -7,10 +7,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Expense Manager	|	List Income</title>
-<jsp:include page="UserHeader.jsp"></jsp:include>
+<jsp:include page="AdminHeader.jsp"></jsp:include>
 </head>
 <body>
-<jsp:include page="UserSidebar.jsp"></jsp:include>
+<jsp:include page="AdminSidebar.jsp"></jsp:include>
 
 <main id="main" class="main">
 
@@ -88,7 +88,7 @@
     </section>
    </main>
    <jsp:include page="AllJs.jsp"></jsp:include>
-    <jsp:include page="UserFooter.jsp"></jsp:include>
+    <jsp:include page="AdminFooter.jsp"></jsp:include>
    
 </body>
 </html>
